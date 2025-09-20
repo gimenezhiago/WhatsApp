@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormatarNumeroTelefone, ManipularMudançaTelefone } from "../../funcao/Funcoes";
+import { ManipularMudançaTelefone } from "../../funcao/Funcoes";
 
 export default function GeradorLink() {
     const [numeroTelefone, setNumeroTelefone] = useState("");
@@ -25,6 +25,15 @@ export default function GeradorLink() {
     }
 
     const copiarLink = () => {
+        try {
+            navigator.clipboard.writeText(linkGerado);
+        }
+        catch (err) {
+            console.error("Erro ao copiar o link: ", err);
+        }
+    }
+
+    const abrirWhatsApp = () => {
         window.open(linkGerado, '_blank'); // Abre o link em uma nova aba
     }
 
@@ -43,7 +52,7 @@ export default function GeradorLink() {
                     <input 
                         type="text"
                         value={numeroTelefone}
-                        onChange={ManipularMudançaTelefone}
+                        onChange={e => setNumeroTelefone(ManipularMudançaTelefone(e.target.value))}
                         placeholder="(XX) XXXXX-XXXX"
                         onFocus={(e) => e.target.style.borderColor = '#10b981'}
                         onBlur={(e) => e.target.style.borderColor = '#d1d5db'} 
