@@ -1,0 +1,1 @@
+O projeto é um gerador de link para Whatsapp

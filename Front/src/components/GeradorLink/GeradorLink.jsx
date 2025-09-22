@@ -47,7 +47,6 @@ export default function GeradorLink() {
                 <label>Número do WhatsApp</label>
                 <div>
                     <div>
-
                     </div>
                     <input 
                         type="text"
