@@ -1,4 +1,4 @@
-import * as C from './App.styles';
+import * as C from './App.styles.js';
 import { useState } from 'react';
 import Cabecalho from './components/Cabecalho/Cabecalho';
 import ListaContato from './components/ListaContato/ListaContato';
@@ -37,11 +37,10 @@ export default function App() {
   }
 
   return (
-    <div>
+    <C.Container>
       <Cabecalho/>
 
       <div>
-        <div>
           <GeradorLink aoGerarLink={manipularLinkGerado}/>
           <ListaContato
             contatos={contatos}
@@ -50,8 +49,7 @@ export default function App() {
             onSendMessage={manipularEnviarMensagem}
             onSave={manipularSalvarContato}
           />
-        </div>
       </div>
-    </div>
+    </C.Container>
   )
 }

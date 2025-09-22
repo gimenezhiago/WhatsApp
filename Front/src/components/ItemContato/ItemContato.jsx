@@ -15,8 +15,8 @@ export default function ItemContato({ contato, onEdit, onDelete, onSendMessage }
             </div>
             <div>
                 <button
-                    onClick={() => aoEnviarMensagem(contato)}
-                    onMouseEnter={() => setHover({ ...hover, message: true })}
+                    onClick={() => onSendMessageMensagem(contato)}
+                    onMouseEnter={() => setHover({ ...hover, message: true })} 
                     onMouseLeave={() => setHover({ ...hover, message: false })}
                 >
                     Mensagem
@@ -33,7 +33,7 @@ export default function ItemContato({ contato, onEdit, onDelete, onSendMessage }
                     onMouseEnter={() => setHover({ ...hover, delete: true })}
                     onMouseLeave={() => setHover({ ...hover, delete: false })}
                 >
-
+                    Excluir
                 </button>
             </div>
         </div>

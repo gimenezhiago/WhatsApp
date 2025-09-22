@@ -17,6 +17,10 @@ export default function ListaContato({ contatos, onDelete, onEdit, onSendMessage
 
             {contatos.length === 0 ? (
                 <div>
+                    Nenhum contato salvo ainda.
+                </div>
+            ) : (
+                <div>
                     {contatos.map((contato) => (
                         <ItemContato
                             key={contato.id}
@@ -26,10 +30,6 @@ export default function ListaContato({ contatos, onDelete, onEdit, onSendMessage
                             onSendMessage={onSendMessage}
                         />
                     ))}
-                </div>
-            ) : (
-                <div>
-                    Nenhum contato salvo ainda.
                 </div>
             )}
         </div>

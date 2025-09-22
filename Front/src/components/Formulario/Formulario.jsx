@@ -7,11 +7,11 @@ export default function Formulario({ onSave }) {
   const [botaoHover, setBotaoHover] = useState(false);
 
   const manipularEnvio = () => {
-    if (nome.trim() === "" || telefone.trim() === "") {
+    if (nome.trim() !== "" && telefone.trim() !== "") {
         onSave({
             nome: nome.trim(),
             telefone: telefone.trim()
-        })
+        });
         setNome("");
         setTelefone("");
     }
@@ -31,7 +31,7 @@ export default function Formulario({ onSave }) {
             <input
                 type="text"
                 value={telefone}
-                onChange={setTelefone(ManipularMudancaTelefone(e.target.value))}
+                onChange={e => setTelefone(ManipularMudancaTelefone(e.target.value))}
                 placeholder="Número de telefone"
                 onFocus={(e) => e.target.style.borderColor = '#10b981'}
                 onBlur={(e) => e.target.style.borderColor = '#d1d5db'}  
