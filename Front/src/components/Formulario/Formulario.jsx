@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ManipularMudançaTelefone } from "../../funcao/Funcoes";
+import { ManipularMudancaTelefone } from "../../funcao/Funcoes";
 
 export default function Formulario({ onSave }) {
   const [nome, setNome] = useState("");
@@ -31,7 +31,7 @@ export default function Formulario({ onSave }) {
             <input
                 type="text"
                 value={telefone}
-                onChange={ManipularMudançaTelefone}
+                onChange={setTelefone(ManipularMudancaTelefone(e.target.value))}
                 placeholder="Número de telefone"
                 onFocus={(e) => e.target.style.borderColor = '#10b981'}
                 onBlur={(e) => e.target.style.borderColor = '#d1d5db'}  

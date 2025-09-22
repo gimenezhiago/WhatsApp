@@ -6,7 +6,7 @@ export const FormatarNumeroTelefone = (numero) => {
   return numero;
 };
 
-export const ManipularMudançaTelefone = (e) => {
-  const formatado = FormatarNumeroTelefone(e.target.value);
-  setNumeroTelefone(formatado);
+export const ManipularMudancaTelefone = (e) => {
+  const formatado = FormatarNumeroTelefone(e);
+  return formatado
 };

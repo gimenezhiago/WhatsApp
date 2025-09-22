@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ManipularMudançaTelefone } from "../../funcao/Funcoes";
+import { ManipularMudancaTelefone } from "../../funcao/Funcoes";
 
 export default function GeradorLink() {
     const [numeroTelefone, setNumeroTelefone] = useState("");
@@ -17,11 +17,6 @@ export default function GeradorLink() {
         }
 
         setLinkGerado(link);
-        aoGerarLink && aoGerarLink({
-            telefone: numeroTelefone,
-            mensagem: mensagem,
-            link: link
-        })
     }
 
     const copiarLink = () => {
@@ -51,7 +46,7 @@ export default function GeradorLink() {
                     <input 
                         type="text"
                         value={numeroTelefone}
-                        onChange={e => setNumeroTelefone(ManipularMudançaTelefone(e.target.value))}
+                        onChange={e => setNumeroTelefone(ManipularMudancaTelefone(e.target.value))}
                         placeholder="(XX) XXXXX-XXXX"
                         onFocus={(e) => e.target.style.borderColor = '#10b981'}
                         onBlur={(e) => e.target.style.borderColor = '#d1d5db'} 
@@ -76,8 +71,7 @@ export default function GeradorLink() {
                     onClick={gerarLink}
                     onMouseEnter={() => setBotaoHover({ ...botaoHover, gerar: true })}
                     onMouseLeave={() => setBotaoHover({ ...botaoHover, gerar: false })}
-                ></button>
-                Preparar Mensagem
+               >Preparar Mensagem</button>
             </div>
 
             <div>
