@@ -40,7 +40,7 @@ export default function App() {
     <C.Container>
       <Cabecalho/>
 
-      <div>
+      <C.ConteudoPrincipal>
           <GeradorLink aoGerarLink={manipularLinkGerado}/>
           <ListaContato
             contatos={contatos}
@@ -49,7 +49,7 @@ export default function App() {
             onSendMessage={manipularEnviarMensagem}
             onSave={manipularSalvarContato}
           />
-      </div>
+      </C.ConteudoPrincipal>
     </C.Container>
   )
 }

@@ -2,6 +2,8 @@ import { useState } from "react";
 import Formulario from "../Formulario/Formulario";
 import ItemContato from "../ItemContato/ItemContato";
 import { useEffect } from "react";
+import { User } from "lucide-react";
+import * as C from './ListaContato.styles'
 
 export default function ListaContato({onDelete, onEdit, onSendMessage, onSave }) {
     const [contatos, setContatos] = useState([]);
@@ -28,23 +30,23 @@ export default function ListaContato({onDelete, onEdit, onSendMessage, onSave })
     if (loading) return <p>Carregando...</p>;
 
     return (
-        <div>
-            <div>
-                <h2>Agenda de Contatos</h2>
-            </div>
+        <C.Cartao>
+            <C.TituloSecao>
+                <C.H2Secao>Agenda de Contatos</C.H2Secao>
+            </C.TituloSecao>
 
             <Formulario onSave={onSave} />
 
-            <div>
-                <h3>Seus Contatos ({contatos.length})</h3>
-            </div>
+            <C.TituloSecao>
+                <C.H3Lista>Seus Contatos ({contatos.length})</C.H3Lista>
+            </C.TituloSecao>
 
             {contatos.length === 0 ? (
-                <div>
+                <C.ContatoVazio>
                     Nenhum contato salvo ainda.
-                </div>
+                </C.ContatoVazio>
             ) : (
-                <div>
+                <C.ListaContatos>
                     {contatos.map((contato) => (
                         <ItemContato
                             key={contato.id}
@@ -54,8 +56,8 @@ export default function ListaContato({onDelete, onEdit, onSendMessage, onSave })
                             onSendMessage={onSendMessage}
                         />
                     ))}
-                </div>
+                </C.ListaContatos>
             )}
-        </div>
+        </C.Cartao>
     )
 }

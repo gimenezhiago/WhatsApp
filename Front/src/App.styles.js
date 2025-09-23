@@ -8,3 +8,10 @@ export const Container = styled.div`
     padding: 0 1rem;
     margin: 0;
 `;
+
+export const ConteudoPrincipal = styled.main`
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    justify-content: center;
+    display: flex;
+`

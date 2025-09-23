@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ManipularMudancaTelefone } from "../../funcao/Funcoes";
+import * as C from "./Formulario.styles";
+import { User } from "lucide-react"
 
 export default function Formulario({ onSave }) {
   const [nome, setNome] = useState("");
@@ -19,8 +21,8 @@ export default function Formulario({ onSave }) {
 
   return (
     <div>
-        <div>
-            <input
+        <C.GridStyle>
+            <C.CampoInput
                 type="text"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
@@ -28,7 +30,7 @@ export default function Formulario({ onSave }) {
                 onFocus={(e) => e.target.style.borderColor = '#10b981'}
                 onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
             />
-            <input
+            <C.CampoInput
                 type="text"
                 value={telefone}
                 onChange={e => setTelefone(ManipularMudancaTelefone(e.target.value))}
@@ -36,18 +38,19 @@ export default function Formulario({ onSave }) {
                 onFocus={(e) => e.target.style.borderColor = '#10b981'}
                 onBlur={(e) => e.target.style.borderColor = '#d1d5db'}  
             />
-        </div>
+        </C.GridStyle>
 
-        <div>
-            <button
+        <C.GrupoFormulario>
+            <C.Botao
                 onClick={manipularEnvio}
                 disabled={nome.trim() === "" || telefone.trim() === ""}
                 onMouseEnter={() => setBotaoHover(true)}
                 onMouseLeave={() => setBotaoHover(false)}
             >
+                <User size={16} style={{ marginRight: '0.5rem' }} />
                 Salvar na Agenda
-            </button>
-        </div>
+            </C.Botao>
+        </C.GrupoFormulario>
     </div>
   )
 }
