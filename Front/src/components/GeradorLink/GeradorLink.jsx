@@ -35,19 +35,19 @@ export default function GeradorLink() {
   };
 
   return (
-    <div>
-      <div>
+    <C.Cartao>
+      <C.TituloSecao>
         <MessageCircle size={24} color="#10b981"/>
-        <h2>Gerador de Links</h2>
-      </div>
+        <C.H2Secao>Gerador de Links</C.H2Secao>
+      </C.TituloSecao>
 
-      <div>
-        <label>Número do WhatsApp</label>
-        <div>
-          <div>
+      <C.GrupoFormulario>
+        <C.Rotulo>Número do WhatsApp</C.Rotulo>
+        <C.ContainerInput>
+          <C.IconeInput>
             <Phone size={18} />
-          </div>
-          <input
+          </C.IconeInput  >
+          <C.CampoInputComIcone
             type="text"
             value={numeroTelefone}
             onChange={(e) =>
@@ -57,12 +57,12 @@ export default function GeradorLink() {
             onFocus={(e) => (e.target.style.borderColor = "#10b981")}
             onBlur={(e) => (e.target.style.borderColor = "#d1d5db")}
           />
-        </div>
-      </div>
+        </C.ContainerInput>
+      </C.GrupoFormulario>
 
-      <div>
-        <label>Mensagem (opcional)</label>
-        <textarea
+      <C.GrupoFormulario>
+        <C.Rotulo>Mensagem (opcional)</C.Rotulo>
+        <C.AreaTexto
           value={mensagem}
           onChange={(e) => setMensagem(e.target.value)}
           rows={4}
@@ -70,46 +70,46 @@ export default function GeradorLink() {
           onFocus={(e) => (e.target.style.borderColor = "#10b981")}
           onBlur={(e) => (e.target.style.borderColor = "#d1d5db")}
         />
-      </div>
+      </C.GrupoFormulario>
 
-      <div>
-        <button
+      <C.GrupoFormulario>
+        <C.Botao
           onClick={gerarLink}
           onMouseEnter={() => setBotaoHover({ ...botaoHover, gerar: true })}
           onMouseLeave={() => setBotaoHover({ ...botaoHover, gerar: false })}
         >
             <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
           Preparar Mensagem
-        </button>
-      </div>
+        </C.Botao>
+      </C.GrupoFormulario>
 
-      <div>
-        <label>Link Gerado</label>
-        <div>
-          <input
+      <C.SecaoLink>
+        <C.Rotulo>Link Gerado</C.Rotulo>
+        <C.GrupoInputLink>
+          <C.InputLink
             type="text"
             value={linkGerado}
             readOnly // Campo somente leitura
           />
-          <button
+          <C.BotaoCopiar
             onClick={copiarLink}
             title="Copiar Link"
             onMouseEnter={() => setBotaoHover({ ...botaoHover, copiar: true })}
             onMouseLeave={() => setBotaoHover({ ...botaoHover, copiar: false })}
           >
             <Copy size={18} />
-          </button>
-        </div>
+          </C.BotaoCopiar>
+        </C.GrupoInputLink>
 
-        <button
+        <C.Botao
           onClick={abrirWhatsApp}
           onMouseEnter={() => setBotaoHover({ ...botaoHover, abrir: true })}
           onMouseLeave={() => setBotaoHover({ ...botaoHover, abrir: false })}
         >
           <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
           Abrir WhatsApp
-        </button>
-      </div>
-    </div>
+        </C.Botao>
+      </C.SecaoLink>
+    </C.Cartao>
   );
 }

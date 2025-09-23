@@ -1,41 +1,43 @@
 import { useState } from 'react';
+import * as C from './ItemContato.styles';
+import { Trash2 } from 'lucide-react';
 
 export default function ItemContato({ contato, onEdit, onDelete, onSendMessage }) {
     const [hover, setHover] = useState({});
     const [itemHover, setItemHover] = useState(false);
 
     return (
-        <div
+        <C.ItemContato
             onMouseEnter={() => setItemHover(true)}
             onMouseLeave={() => setItemHover(false)}  
         >
+            <C.InfoContato>
+                <C.H3Contato>{contato.nome}</C.H3Contato>
+                <C.PContato>{contato.telefone}</C.PContato>
+            </C.InfoContato>
             <div>
-                <h3>{contato.nome}</h3>
-                <p>{contato.telefone}</p>
-            </div>
-            <div>
-                <button
+                <C.BotaoMensagem
                     onClick={() => onSendMessageMensagem(contato)}
                     onMouseEnter={() => setHover({ ...hover, message: true })} 
                     onMouseLeave={() => setHover({ ...hover, message: false })}
                 >
                     Mensagem
-                </button>
-                <button
+                </C.BotaoMensagem>
+                <C.BotaoEditar
                     onClick={() => onEdit(contato)}
                     onMouseEnter={() => setHover({ ...hover, edit: true })}
                     onMouseLeave={() => setHover({ ...hover, edit: false })}
                 >
                     Editar
-                </button>
-                <button
+                </C.BotaoEditar>
+                <C.BotaoExcluir
                     onClick={() => onDelete(contato.id)}
                     onMouseEnter={() => setHover({ ...hover, delete: true })}
                     onMouseLeave={() => setHover({ ...hover, delete: false })}
                 >
-                    Excluir
-                </button>
+                    <Trash2 size={16} />
+                </C.BotaoExcluir>
             </div>
-        </div>
+        </C.ItemContato>
     )
 }
