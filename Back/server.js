@@ -1,14 +1,24 @@
-import express from "express";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import * as contactsController from './controller/contacts.controller.js';
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("🚀 Servidor rodando com Express + Nodemon!");
-});
+const PORT = process.env.PORT || 3000;
+
+app.get('/API', (req, res) => res.json({ mensagem: 'API funcionando' }));
+
+app.get('/contacts/all', contactsController.findAll);
+app.post('/contacts/add', contactsController.addContact);
+app.put('/contacts/delete/:id', contactsController.deleteContact);
+app.put('/contacts/update/:id', contactsController.updateContact);
+
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor (contacts) rodando em http://localhost:${PORT}`);
 });
