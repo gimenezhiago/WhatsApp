@@ -15,12 +15,12 @@ export default function ItemContato({ contato, onEdit, onDelete, onSendMessage }
                 <C.H3Contato>{contato.nome}</C.H3Contato>
                 <C.PContato>{contato.telefone}</C.PContato>
             </C.InfoContato>
+            <C.AcoesContato>
+                <C.H3Contato>{contato.name}</C.H3Contato>
+                <C.PContato>{contato.phone_number}</C.PContato>
+            </C.AcoesContato>
             <div>
-                <h3>{contato.name}</h3>
-                <p>{contato.phone_number}</p>
-            </div>
-            <div>
-                <button
+                <C.BotaoMensagem
                     onClick={() => onSendMessageMensagem(contato)}
                     onMouseEnter={() => setHover({ ...hover, message: true })} 
                     onMouseLeave={() => setHover({ ...hover, message: false })}
