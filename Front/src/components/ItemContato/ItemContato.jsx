@@ -10,8 +10,8 @@ export default function ItemContato({ contato, onEdit, onDelete, onSendMessage }
             onMouseLeave={() => setItemHover(false)}  
         >
             <div>
-                <h3>{contato.nome}</h3>
-                <p>{contato.telefone}</p>
+                <h3>{contato.name}</h3>
+                <p>{contato.phone_number}</p>
             </div>
             <div>
                 <button

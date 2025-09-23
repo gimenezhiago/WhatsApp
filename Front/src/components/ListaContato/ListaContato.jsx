@@ -1,8 +1,32 @@
 import { useState } from "react";
 import Formulario from "../Formulario/Formulario";
 import ItemContato from "../ItemContato/ItemContato";
+import { useEffect } from "react";
 
-export default function ListaContato({ contatos, onDelete, onEdit, onSendMessage, onSave }) {
+export default function ListaContato({onDelete, onEdit, onSendMessage, onSave }) {
+    const [contatos, setContatos] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchContatos = async () => {
+            try {
+                const res = await fetch("http://localhost:3000/contacts/all");
+                if (!res.ok) throw new Error("Erro ao carregar contatos");
+                const data = await res.json();
+                setContatos(data);
+            } catch (err) {
+                console.error(err);
+                alert("Erro ao carregar contatos");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchContatos();
+    }, []);
+
+    if (loading) return <p>Carregando...</p>;
+
     return (
         <div>
             <div>
