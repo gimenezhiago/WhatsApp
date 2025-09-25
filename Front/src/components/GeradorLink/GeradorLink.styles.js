@@ -6,6 +6,7 @@ export const Cartao = styled.div`
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     width: 200rem;
+    margin-right: 0.75rem;
 `;
 
 export const TituloSecao = styled.div`

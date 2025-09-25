@@ -7,6 +7,7 @@ export const Cartao = styled.div`
     padding: 1.5rem;
     width: 200rem;
     gap: 1.5rem;
+    margin-left: 0.75rem;
 `;
 
 export const TituloSecao = styled.h2`
@@ -39,4 +40,21 @@ export const ContatoVazio = styled.div`
     text-align: center;
     padding: 2rem 0;
     color: #6b7280;
+`;
+
+export const BotaoReload = styled.button`
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+        background: #e5e7eb;
+    }
 `;

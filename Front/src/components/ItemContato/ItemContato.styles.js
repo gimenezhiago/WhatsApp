@@ -29,6 +29,15 @@ export const PContato = styled.p`
 export const AcoesContato = styled.div`
     display: flex;
     gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 18vw;
+`;
+
+export const SpaceButtons = styled.div`
+    display: flex;
+    width: 15vw;
+    justify-content: space-around;
 `;
 
 export const BotaoMensagem = styled.button`
