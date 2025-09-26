@@ -1,19 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
+import * as C from "./ListaContato.styles";
 import Formulario from "../Formulario/Formulario";
 import ItemContato from "../ItemContato/ItemContato";
-import { RotateCw } from "lucide-react"; 
-import * as C from './ListaContato.styles';
+import { RotateCw } from "lucide-react";
 
-export default function ListaContato({onSendMessage}) {
+export default function ListaContato({ onSendMessage }) {
     const [contatos, setContatos] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // função reaproveitável
     const fetchContatos = useCallback(async () => {
         setLoading(true);
         try {
             const res = await fetch("http://localhost:3000/contacts/all");
-            if (!res.ok) throw new Error("Erro ao carregar contatos");
+            if (!res.ok) throw new Error("Erro ao buscar contatos");
             const data = await res.json();
             setContatos(data);
         } catch (err) {
@@ -30,13 +29,8 @@ export default function ListaContato({onSendMessage}) {
 
     const handleDelete = async (id) => {
         if (!window.confirm("Deseja realmente excluir este contato?")) return;
-
         try {
-            const res = await fetch(`http://localhost:3000/contacts/delete/${id}`, {
-                method: "DELETE",
-            });
-            if (!res.ok) throw new Error("Erro ao excluir contato");
-            // recarrega lista
+            await fetch(`http://localhost:3000/contacts/delete/${id}`, { method: "DELETE" });
             fetchContatos();
         } catch (err) {
             console.error(err);
@@ -46,19 +40,29 @@ export default function ListaContato({onSendMessage}) {
 
     const handleEdit = async (id, novoContato) => {
         try {
-            const res = await fetch(`http://localhost:3000/contacts/update/${id}`, {
+            await fetch(`http://localhost:3000/contacts/edit/${id}`, {
                 method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(novoContato),
             });
-            if (!res.ok) throw new Error("Erro ao editar contato");
-            // recarrega lista
             fetchContatos();
         } catch (err) {
             console.error(err);
             alert("Erro ao editar contato");
+        }
+    };
+
+    const handleSave = async (contato) => {
+        try {
+            await fetch("http://localhost:3000/contacts/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(contato),
+            });
+            fetchContatos();
+        } catch (err) {
+            console.error(err);
+            alert("Erro ao adicionar contato");
         }
     };
 
@@ -70,13 +74,11 @@ export default function ListaContato({onSendMessage}) {
                 <C.H2Secao>Agenda de Contatos</C.H2Secao>
             </C.TituloSecao>
 
-            <Formulario onSave={fetchContatos} />
+            <Formulario onSave={handleSave} />
 
-            <C.TituloSecao style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <C.TituloSecao>
                 <C.H3Lista>Seus Contatos ({contatos.length})</C.H3Lista>
-                
-                {/* Botão de recarregar */}
-                <C.BotaoReload onClick={fetchContatos}>
+                <C.BotaoReload onClick={fetchContatos} disabled={loading}>
                     <RotateCw size={18} style={{ marginRight: "6px" }} />
                     Recarregar
                 </C.BotaoReload>

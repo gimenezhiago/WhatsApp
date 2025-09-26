@@ -54,8 +54,6 @@ export default function GeradorLink() {
               setNumeroTelefone(ManipularMudancaTelefone(e.target.value))
             }
             placeholder="(XX) XXXXX-XXXX"
-            onFocus={(e) => (e.target.style.borderColor = "#10b981")}
-            onBlur={(e) => (e.target.style.borderColor = "#d1d5db")}
           />
         </C.ContainerInput>
       </C.GrupoFormulario>
@@ -67,16 +65,12 @@ export default function GeradorLink() {
           onChange={(e) => setMensagem(e.target.value)}
           rows={4}
           placeholder="Digite sua mensagem aqui..."
-          onFocus={(e) => (e.target.style.borderColor = "#10b981")}
-          onBlur={(e) => (e.target.style.borderColor = "#d1d5db")}
         />
       </C.GrupoFormulario>
 
       <C.GrupoFormulario>
         <C.Botao
           onClick={gerarLink}
-          onMouseEnter={() => setBotaoHover({ ...botaoHover, gerar: true })}
-          onMouseLeave={() => setBotaoHover({ ...botaoHover, gerar: false })}
         >
             <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
           Preparar Mensagem
@@ -94,8 +88,6 @@ export default function GeradorLink() {
           <C.BotaoCopiar
             onClick={copiarLink}
             title="Copiar Link"
-            onMouseEnter={() => setBotaoHover({ ...botaoHover, copiar: true })}
-            onMouseLeave={() => setBotaoHover({ ...botaoHover, copiar: false })}
           >
             <Copy size={18} />
           </C.BotaoCopiar>
@@ -103,8 +95,6 @@ export default function GeradorLink() {
 
         <C.Botao
           onClick={abrirWhatsApp}
-          onMouseEnter={() => setBotaoHover({ ...botaoHover, abrir: true })}
-          onMouseLeave={() => setBotaoHover({ ...botaoHover, abrir: false })}
         >
           <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
           Abrir WhatsApp
