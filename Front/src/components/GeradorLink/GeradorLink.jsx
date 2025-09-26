@@ -7,13 +7,15 @@ export default function GeradorLink() {
   const [numeroTelefone, setNumeroTelefone] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [linkGerado, setLinkGerado] = useState("");
-  const [botaoHover, setBotaoHover] = useState({});
 
   const gerarLink = () => {
     const numeros = numeroTelefone.replace(/\D/g, "");
+    if (!numeros || numeros.length < 10) {
+      alert("Por favor, insira um número de telefone válido.");
+      return;
+    }
     const numeroCompleto = `55${numeros}`;
     let link = `https://wa.me/${numeroCompleto}`;
-
     if (mensagem.trim()) {
       // Verifica se a mensagem não está vazia
       link = link + `?text=${encodeURIComponent(mensagem)}`; // Adiciona a mensagem ao link
