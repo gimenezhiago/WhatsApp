@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Formulario from "../Formulario/Formulario";
 import ItemContato from "../ItemContato/ItemContato";
-import { RotateCw } from "lucide-react"; // ícone de reload
+import { RotateCw } from "lucide-react"; 
 import * as C from './ListaContato.styles';
 
 export default function ListaContato({onSendMessage}) {
@@ -44,7 +44,6 @@ export default function ListaContato({onSendMessage}) {
         }
     };
 
-    // -------- EDIT --------
     const handleEdit = async (id, novoContato) => {
         try {
             const res = await fetch(`http://localhost:3000/contacts/update/${id}`, {
@@ -71,7 +70,7 @@ export default function ListaContato({onSendMessage}) {
                 <C.H2Secao>Agenda de Contatos</C.H2Secao>
             </C.TituloSecao>
 
-            <Formulario onSave={onSave} />
+            <Formulario onSave={fetchContatos} />
 
             <C.TituloSecao style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <C.H3Lista>Seus Contatos ({contatos.length})</C.H3Lista>
@@ -93,8 +92,8 @@ export default function ListaContato({onSendMessage}) {
                         <ItemContato
                             key={contato.id}
                             contato={contato}
-                            onEdit={onEdit}
-                            onDelete={onDelete}
+                            onEdit={handleEdit}
+                            onDelete={handleDelete}
                             onSendMessage={onSendMessage}
                         />
                     ))}
