@@ -1,9 +1,9 @@
 class Contact {
     constructor({ id, contactId, name, phone_number, phoneNumber, created_at, createdAt } = {}) {
-        this.ContactId = contactId || id || null;
-        this.Name = name || null;
-        this.PhoneNumber = (phoneNumber || phone_number || null);
-        this.CreatedAt = createdAt || created_at || null;
+        this.contactId = contactId || id || null;
+        this.name = name || null;
+        this.phoneNumber = phoneNumber || phone_number || null;
+        this.createdAt = createdAt || created_at || null;
     }
 }
 
