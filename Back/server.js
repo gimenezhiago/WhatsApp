@@ -15,7 +15,7 @@ app.get('/API', (req, res) => res.json({ mensagem: 'API funcionando' }));
 
 app.get('/contacts/all', contactsController.findAll);
 app.post('/contacts/add', contactsController.addContact);
-app.put('/contacts/delete/:id', contactsController.deleteContact);
+app.delete('/contacts/delete/:id', contactsController.deleteContact);
 app.put('/contacts/update/:id', contactsController.updateContact);
 
 

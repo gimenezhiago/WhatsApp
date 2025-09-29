@@ -6,7 +6,7 @@ export const ContainerCabecalho = styled.header`
     background: #f8f9fa;
 `;
 
-export const TituloCabecalho = styled.h1`
+export const TituloCabecalho = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;

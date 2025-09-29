@@ -10,7 +10,7 @@ export const Cartao = styled.div`
     margin-left: 0.75rem;
 `;
 
-export const TituloSecao = styled.h2`
+export const TituloSecao = styled.div` /* NÃO é um heading */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,6 +18,8 @@ export const TituloSecao = styled.h2`
 `;
 
 export const H3Lista = styled.h3`
+    display: flex;
+    text-align: center;
     font-size: 1.125rem;
     font-weight: 600;
     color: #1f2937;

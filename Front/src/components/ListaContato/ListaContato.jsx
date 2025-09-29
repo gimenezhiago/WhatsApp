@@ -11,15 +11,15 @@ export default function ListaContato({ onSendMessage }) {
     const fetchContatos = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:3000/contacts/all");
-            if (!res.ok) throw new Error("Erro ao buscar contatos");
-            const data = await res.json();
-            setContatos(data);
+        const res = await fetch("http://localhost:3000/contacts/all");
+        if (!res.ok) throw new Error("Erro ao buscar contatos");
+        const data = await res.json();
+        setContatos(data);
         } catch (err) {
-            console.error(err);
-            alert("Erro ao carregar contatos");
+        console.error(err);
+        alert("Erro ao carregar contatos");
         } finally {
-            setLoading(false);
+        setLoading(false);
         }
     }, []);
 
@@ -30,77 +30,89 @@ export default function ListaContato({ onSendMessage }) {
     const handleDelete = async (id) => {
         if (!window.confirm("Deseja realmente excluir este contato?")) return;
         try {
-            await fetch(`http://localhost:3000/contacts/delete/${id}`, { method: "DELETE" });
-            fetchContatos();
+        await fetch(`http://localhost:3000/contacts/delete/${id}`, {
+            method: "DELETE",
+        });
+        fetchContatos();
         } catch (err) {
-            console.error(err);
-            alert("Erro ao excluir contato");
+        console.error(err);
+        alert("Erro ao excluir contato");
         }
     };
 
     const handleEdit = async (id, novoContato) => {
         try {
-            await fetch(`http://localhost:3000/contacts/edit/${id}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(novoContato),
-            });
-            fetchContatos();
+        await fetch(`http://localhost:3000/contacts/update/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(novoContato),
+        });
+        fetchContatos();
         } catch (err) {
-            console.error(err);
-            alert("Erro ao editar contato");
+        console.error(err);
+        alert("Erro ao editar contato");
         }
     };
 
     const handleSave = async (contato) => {
         try {
-            await fetch("http://localhost:3000/contacts/add", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(contato),
-            });
-            fetchContatos();
+        await fetch("http://localhost:3000/contacts/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(contato),
+        });
+        fetchContatos();
         } catch (err) {
-            console.error(err);
-            alert("Erro ao adicionar contato");
+        console.error(err);
+        alert("Erro ao adicionar contato");
         }
     };
 
-    if (loading) return <p>Carregando...</p>;
 
     return (
         <C.Cartao>
-            <C.TituloSecao>
-                <C.H2Secao>Agenda de Contatos</C.H2Secao>
-            </C.TituloSecao>
+        <C.TituloSecao>
+            <C.H2Secao
+            as="div"
+            role="heading"
+            aria-level={2}
+            >
+            Agenda de Contatos
+            </C.H2Secao>
+        </C.TituloSecao>
 
-            <Formulario onSave={handleSave} />
+        <Formulario onSave={handleSave} />
 
-            <C.TituloSecao>
-                <C.H3Lista>Seus Contatos ({contatos.length})</C.H3Lista>
-                <C.BotaoReload onClick={fetchContatos} disabled={loading}>
-                    <RotateCw size={18} style={{ marginRight: "6px" }} />
-                    Recarregar
-                </C.BotaoReload>
-            </C.TituloSecao>
+        <C.TituloSecao>
+            <C.H3Lista
+            as="div"
+            role="heading"
+            aria-level={3}
+            >
+            Seus Contatos ({contatos.length})
+            </C.H3Lista>
 
-            {contatos.length === 0 ? (
-                <C.ContatoVazio>
-                    Nenhum contato salvo ainda.
-                </C.ContatoVazio>
-            ) : (
-                <C.ListaContatos>
-                    {contatos.map((contato) => (
-                        <ItemContato
-                            key={contato.id}
-                            contato={contato}
-                            onEdit={handleEdit}
-                            onDelete={handleDelete}
-                            onSendMessage={onSendMessage}
-                        />
-                    ))}
-                </C.ListaContatos>
-            )}
+            <C.BotaoReload onClick={fetchContatos} disabled={loading}>
+                <RotateCw size={18} style={{ marginRight: "6px" }} />
+                Recarregar
+            </C.BotaoReload>
+        </C.TituloSecao>
+
+        {contatos.length === 0 ? (
+            <C.ContatoVazio>Nenhum contato salvo ainda.</C.ContatoVazio>
+        ) : (
+            <C.ListaContatos>
+            {contatos.map((contato) => (
+                <ItemContato
+                key={contato.id}
+                contato={contato}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                onSendMessage={onSendMessage}
+                />
+            ))}
+            </C.ListaContatos>
+        )}
         </C.Cartao>
     );
 }
