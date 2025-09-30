@@ -48,7 +48,7 @@ export const ContatoVazio = styled.div`
 export const BotaoReload = styled.button`
     display: flex;
     align-items: center;
-    background: #f3f4f6;
+    background: #f3f4f6  #10b981;
     color: #111827;
     border: 1px solid #d1d5db;
     padding: 0.4rem 0.8rem;
@@ -58,6 +58,6 @@ export const BotaoReload = styled.button`
     transition: background 0.2s;
 
     &:hover {
-        background: #e5e7eb;
+        background: #10b981;
     }
 `;

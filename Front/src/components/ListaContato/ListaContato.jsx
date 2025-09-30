@@ -93,8 +93,7 @@ export default function ListaContato({ onSendMessage }) {
             </C.H3Lista>
 
             <C.BotaoReload onClick={fetchContatos} disabled={loading}>
-                <RotateCw size={18} style={{ marginRight: "6px" }} />
-                Recarregar
+                <RotateCw size={18}/>
             </C.BotaoReload>
         </C.TituloSecao>
 
