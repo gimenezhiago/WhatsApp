@@ -2,11 +2,12 @@ import { useState } from "react";
 import { ManipularMudancaTelefone } from "../../funcao/Funcoes";
 import * as C from "./GeradorLink.styles.js";
 import { MessageCircle, Phone, Copy } from "lucide-react";
+import { useEffect } from "react";
 
-export default function GeradorLink() {
-  const [numeroTelefone, setNumeroTelefone] = useState("");
+export default function GeradorLink( numeroInicial = "") {
   const [mensagem, setMensagem] = useState("");
   const [linkGerado, setLinkGerado] = useState("");
+  const [numeroTelefone, setNumeroTelefone] = useState(numeroInicial);
 
   const gerarLink = () => {
     const numeros = numeroTelefone.replace(/\D/g, "");
@@ -36,6 +37,10 @@ export default function GeradorLink() {
     window.open(linkGerado, "_blank"); // Abre o link em uma nova aba
   };
 
+  useEffect(() => {
+    setNumeroTelefone(numeroInicial);
+  }, [numeroInicial]);
+
   return (
     <C.Cartao>
       <C.TituloSecao>
@@ -51,7 +56,7 @@ export default function GeradorLink() {
           </C.IconeInput  >
           <C.CampoInputComIcone
             type="text"
-            value={numeroTelefone}
+            value={numeroTelefone.numeroInicial}
             onChange={(e) =>
               setNumeroTelefone(ManipularMudancaTelefone(e.target.value))
             }
@@ -85,7 +90,7 @@ export default function GeradorLink() {
           <C.InputLink
             type="text"
             value={linkGerado}
-            readOnly // Campo somente leitura
+            readOnly
           />
           <C.BotaoCopiar
             onClick={copiarLink}

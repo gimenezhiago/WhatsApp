@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as C from './ItemContato.styles';
 import { Trash2 } from 'lucide-react';
 
-export default function ItemContato({ contato, onSendMessageMensagem, onDelete, onEdit }) {
+export default function ItemContato({ contato, onSendMessage, onDelete, onEdit }) {
     const [hover, setHover] = useState({});
     const [itemHover, setItemHover] = useState(false);
 
@@ -63,7 +63,7 @@ export default function ItemContato({ contato, onSendMessageMensagem, onDelete, 
 
             <C.SpaceButtons>
             <C.BotaoMensagem
-                onClick={(e) => { e.stopPropagation(); onSendMessageMensagem?.(contato?.phone_number); }}
+                onClick={(e) => { e.stopPropagation(); onSendMessage?.(contato?.phone_number); }}
                 onMouseEnter={() => setHover({ ...hover, message: true })}
                 onMouseLeave={() => setHover({ ...hover, message: false })}
             >
