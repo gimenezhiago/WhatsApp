@@ -5,9 +5,21 @@ export const Cartao = styled.div`
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    width: 200rem;
+    width: 100%;
+    max-width: 50rem; 
     gap: 1.5rem;
     margin-left: 0.75rem;
+    box-sizing: border-box;
+
+    @media (max-width: 1024px) {
+        max-width: 46rem;
+    }
+
+    @media (max-width: 768px) {
+        margin-left: 0;
+        padding: 1rem;
+        max-width: 100%;
+    }
 `;
 
 export const TituloSecao = styled.div` /* NÃO é um heading */

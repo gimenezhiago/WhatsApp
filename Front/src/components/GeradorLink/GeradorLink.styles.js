@@ -5,7 +5,8 @@ export const Cartao = styled.div`
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    width: 200rem;
+    width: 100%;
+    max-width: 50rem; /* Limita no desktop */
     margin-right: 0.75rem;
 `;
 
