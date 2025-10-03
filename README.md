@@ -13,6 +13,7 @@
 - **Mensagem personalizada:** Adicione uma mensagem opcional ao link.
 - **Agenda de contatos:** Salve, edite, exclua e envie mensagens para seus contatos.
 - **Integração com Supabase:** Os contatos são armazenados de forma segura no Supabase.
+- **Gerador de QR Code:** Gere um QR Code para compartilhar o link do WhatsApp facilmente.
 
 ## Tecnologias utilizadas
 
@@ -24,29 +25,45 @@
 - [Express](https://expressjs.com/)
 - [cors](https://www.npmjs.com/package/cors)
 - [dotenv](https://www.npmjs.com/package/dotenv)
+- [react-qr-code](https://github.com/rosskhanas/react-qr-code)
 
 ## Como executar localmente
 
-1. Clone o repositório:
+1. **Clone o repositório:**
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
    ```
-2. Instale as dependências:
+
+2. **Instale as dependências do backend:**
    ```bash
-   cd WhatsApp
+   cd WhatsApp/Back
    npm install
    ```
-3. Configure as variáveis de ambiente conforme o arquivo `.env.example`.
-4. Inicie o servidor backend:
+
+3. **Instale as dependências do frontend:**
    ```bash
-   node server.js
-   nodemon server.js
+   cd ../Front
+   npm install
    ```
-5. Inicie o frontend:
+
+4. **Configure as variáveis de ambiente:**
+   - Copie o arquivo `.env.example` para `.env` na pasta `Back` e preencha com suas informações.
+
+5. **Inicie o servidor backend:**
    ```bash
+   cd ../Back
+   node server.js
+   # ou, se preferir usar o nodemon para recarregar automaticamente:
+   # npx nodemon server.js
+   ```
+
+6. **Inicie o frontend:**
+   ```bash
+   cd ../Front
    npm run dev
    ```
-6. Acesse a aplicação em [http://localhost:5173](http://localhost:5173) (ou porta configurada).
 
----
+7. **Acesse a aplicação:**
+   - Abra [http://localhost:5173](http://localhost:5173) no seu navegador (ou a porta configurada).
+
 
