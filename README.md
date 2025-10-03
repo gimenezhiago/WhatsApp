@@ -39,7 +39,8 @@
 3. Configure as variáveis de ambiente conforme o arquivo `.env.example`.
 4. Inicie o servidor backend:
    ```bash
-   npm run server
+   node server.js
+   nodemon server.js
    ```
 5. Inicie o frontend:
    ```bash
@@ -48,6 +49,4 @@
 6. Acesse a aplicação em [http://localhost:5173](http://localhost:5173) (ou porta configurada).
 
 ---
-
-Se tiver dúvidas, consulte a documentação das bibliotecas ou abra uma issue!
 

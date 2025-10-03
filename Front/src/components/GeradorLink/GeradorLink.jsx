@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ManipularMudancaTelefone } from "../../funcao/Funcoes";
 import * as C from "./GeradorLink.styles.js";
 import { MessageCircle, Phone, Copy } from "lucide-react";
-import { useEffect } from "react";
+import QRCode from "../QRCode/QRCode";
 
-export default function GeradorLink( numeroInicial = "") {
+export default function GeradorLink({ numeroInicial = ""}) {
   const [mensagem, setMensagem] = useState("");
   const [linkGerado, setLinkGerado] = useState("");
   const [numeroTelefone, setNumeroTelefone] = useState(numeroInicial);
@@ -18,10 +18,8 @@ export default function GeradorLink( numeroInicial = "") {
     const numeroCompleto = `55${numeros}`;
     let link = `https://wa.me/${numeroCompleto}`;
     if (mensagem.trim()) {
-      // Verifica se a mensagem não está vazia
-      link = link + `?text=${encodeURIComponent(mensagem)}`; // Adiciona a mensagem ao link
+      link += `?text=${encodeURIComponent(mensagem)}`;
     }
-
     setLinkGerado(link);
   };
 
@@ -34,7 +32,7 @@ export default function GeradorLink( numeroInicial = "") {
   };
 
   const abrirWhatsApp = () => {
-    window.open(linkGerado, "_blank"); // Abre o link em uma nova aba
+    window.open(linkGerado, "_blank");
   };
 
   useEffect(() => {
@@ -53,10 +51,10 @@ export default function GeradorLink( numeroInicial = "") {
         <C.ContainerInput>
           <C.IconeInput>
             <Phone size={18} />
-          </C.IconeInput  >
+          </C.IconeInput>
           <C.CampoInputComIcone
             type="text"
-            value={numeroTelefone.numeroInicial}
+            value={numeroTelefone}
             onChange={(e) =>
               setNumeroTelefone(ManipularMudancaTelefone(e.target.value))
             }
@@ -76,10 +74,8 @@ export default function GeradorLink( numeroInicial = "") {
       </C.GrupoFormulario>
 
       <C.GrupoFormulario>
-        <C.Botao
-          onClick={gerarLink}
-        >
-            <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
+        <C.Botao onClick={gerarLink}>
+          <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
           Preparar Mensagem
         </C.Botao>
       </C.GrupoFormulario>
@@ -100,13 +96,12 @@ export default function GeradorLink( numeroInicial = "") {
           </C.BotaoCopiar>
         </C.GrupoInputLink>
 
-        <C.Botao
-          onClick={abrirWhatsApp}
-        >
+        <C.Botao onClick={abrirWhatsApp}>
           <MessageCircle size={20} style={{ marginRight: "0.5rem" }} />
           Abrir WhatsApp
         </C.Botao>
       </C.SecaoLink>
+      <QRCode link={linkGerado} />
     </C.Cartao>
   );
 }
