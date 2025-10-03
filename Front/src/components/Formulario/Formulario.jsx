@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as C from "./Formulario.styles";
 import { User } from "lucide-react";
+import { ManipularMudancaTelefone } from "../../funcao/Funcoes";
 
 export default function Formulario({ onSave }) {
     const [nome, setNome] = useState("");
@@ -10,15 +11,19 @@ export default function Formulario({ onSave }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const nomeTrim = nome.trim();
-        const telefoneTrim = telefone.trim();
-        if (nomeTrim === "" || telefoneTrim === "") {
+        const telefoneNumeros = telefone.replace(/\D/g, "");
+        if (nomeTrim === "" || telefoneNumeros === "") {
             alert("Preencha nome e telefone.");
+            return;
+        }
+        if (telefoneNumeros.length < 10 || telefoneNumeros.length > 13) {
+            alert("Por favor, insira um número de telefone válido.");
             return;
         }
         setLoading(true);
         const contato = {
             name: nomeTrim,
-            phone_number: telefoneTrim.replace(/\D/g, ""),
+            phone_number: telefoneNumeros,
         };
         await onSave(contato);
         setNome("");
@@ -38,12 +43,12 @@ export default function Formulario({ onSave }) {
                 <C.CampoInput
                     type="text"
                     value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
+                    onChange={(e) => setTelefone(ManipularMudancaTelefone(e.target.value))}
                     placeholder="Número de telefone"
                 />
             </C.GridStyle>
             <C.GrupoFormulario>
-                <C.Botao type="submit" disabled={loading || nome.trim() === "" || telefone.trim() === ""}>
+                <C.Botao type="submit">
                     <User size={16} style={{ marginRight: '0.5rem' }} />
                     Salvar na Agenda
                 </C.Botao>

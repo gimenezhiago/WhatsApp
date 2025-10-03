@@ -7,19 +7,8 @@ export const Cartao = styled.div`
     padding: 1.5rem;
     width: 100%;
     max-width: 50rem; 
-    gap: 1.5rem;
     margin-left: 0.75rem;
-    box-sizing: border-box;
-
-    @media (max-width: 1024px) {
-        max-width: 46rem;
-    }
-
-    @media (max-width: 768px) {
-        margin-left: 0;
-        padding: 1rem;
-        max-width: 100%;
-    }
+    margin-right: 0.75rem;
 `;
 
 export const TituloSecao = styled.div` /* NÃO é um heading */

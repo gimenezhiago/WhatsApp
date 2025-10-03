@@ -20,7 +20,7 @@ export const ConteudoPrincipal = styled.main`
         gap: 2rem; /* Opcional, para espaçamento entre os itens no desktop */
 
     /* Versão Mobile */
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         flex-direction: column;
         align-items: center; /* Centraliza os itens na vertical */
         gap: 1.5rem; /* Dá espaçamento entre os componentes */

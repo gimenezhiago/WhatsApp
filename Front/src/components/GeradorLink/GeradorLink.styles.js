@@ -8,6 +8,7 @@ export const Cartao = styled.div`
     width: 100%;
     max-width: 50rem; /* Limita no desktop */
     margin-right: 0.75rem;
+    margin-left: 0.75rem;
 `;
 
 export const TituloSecao = styled.div`
