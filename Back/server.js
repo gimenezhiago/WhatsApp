@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import * as contactsController from './controller/contacts.controller.js';
+import * as contactsController from './controller/Contacts.controller.js';
 
 dotenv.config();
 
