@@ -66,18 +66,3 @@
 
 7. **Acesse a aplicação:**
    - Abra [http://localhost:5173](http://localhost:5173) no seu navegador (ou a porta configurada).
-
-## Contribuição
-
-Contribuições são bem-vindas!  
-Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-## Licença
-
-Este projeto está sob a licença MIT.
-
-## Contato
-
-Em caso de dúvidas ou sugestões, entre em contato pelo e-mail: [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
-
-
