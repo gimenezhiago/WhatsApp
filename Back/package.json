@@ -5,11 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
-    "dev:back": "node server.js",
-    "dev:front": "cd ../Front && npm install && npm run dev",
-    "install:front": "cd ../Front && npm install",
-    "build:front": "cd ../Front && npm run build"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +19,6 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1",
     "nodemon": "^3.1.0"
   }
 }
