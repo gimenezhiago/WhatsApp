@@ -4,8 +4,8 @@
 
 ## Link da aplicação
 
-- [Acesse aqui](LINK)
-- Hospedada em: **SERVIÇO**
+- [Acesse aqui](https://whatsapphb.onrender.com/)
+- Hospedada em: **Render**
 
 ## Funcionalidades
 
@@ -27,7 +27,6 @@
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [react-qr-code](https://github.com/rosskhanas/react-qr-code)
 - [nodemon](https://www.npmjs.com/package/nodemon)
-- [concurrently](https://www.npmjs.com/package/concurrently)
 
 ## Como executar localmente
 

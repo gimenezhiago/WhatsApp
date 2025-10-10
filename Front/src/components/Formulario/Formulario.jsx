@@ -45,6 +45,7 @@ export default function Formulario({ onSave }) {
                     value={telefone}
                     onChange={(e) => setTelefone(ManipularMudancaTelefone(e.target.value))}
                     placeholder="Número de telefone"
+                    maxLength={15}
                 />
             </C.GridStyle>
             <C.GrupoFormulario>
