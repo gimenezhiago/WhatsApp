@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
     "dev:back": "node server.js",
-    "dev:front": "npm --prefix ../Front run dev"
+    "dev:front": "cd ../Front && npm install && npm run dev",
+    "install:front": "cd ../Front && npm install",
+    "build:front": "cd ../Front && npm run build"
   },
   "keywords": [],
   "author": "",
